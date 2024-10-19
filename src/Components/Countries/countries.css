@@ -1,6 +1,29 @@
-.country-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+.country-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
+.visited-flag {
+  width: 200px;
+  height: 100px;
+  border: 2px solid tan;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+.flag-container {
+  border: 2px solid mediumturquoise;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.country-visit {
+  border: 2px solid steelblue;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}

@@ -13,3 +13,11 @@
 .non-visited{
     background-color: lightblue;
 }
+
+.country-flag{
+    border: 2px solid grey;
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 20px;
+}

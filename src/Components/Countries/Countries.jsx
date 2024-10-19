@@ -4,7 +4,11 @@ import Country from "../Country/Country";
 import "./countries.css";
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-  const [visitedcountry, setVisitedcountry] = useState([])
+
+  const [visitedcountry, setVisitedcountry] = useState([]);
+
+  const [visitedFlag, setVisitedFlag] = useState([]);
+
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
@@ -12,24 +16,43 @@ const Countries = () => {
   }, []);
 
   const handleVisitedContry = (country) => {
-    console.log(country);
-  }
+    const newVisitedCountry = [...visitedcountry, country];
+    setVisitedcountry(newVisitedCountry);
+  };
 
-
-
+  const handleVisitedFlag = (flag) => {
+    const newFlag = [...visitedFlag, flag];
+    setVisitedFlag(newFlag);
+  };
 
   return (
     <div>
       <h2>Countries: {countries.length}</h2>
-      <div>
-      <h5>Visited Countries: </h5>
-      <ul>
+      <div className="country-visit">
+        <h2>Visited Countries: {visitedcountry.length}</h2>
 
-      </ul>
+        <ul>
+          {visitedcountry.map((country) => (
+            <li key={country.cca3}>{country.name.common}</li>
+          ))}
+        </ul>
       </div>
+
+      <div className="flag-container">
+        <h2>Visited Countries Flag: </h2>
+        {visitedFlag.map((flag) => (
+          <img className="visited-flag" src={flag}></img>
+        ))}
+      </div>
+
       <div className="country-container">
         {countries.map((country) => (
-          <Country  key={country.cca3} country={country} handleVisitedContry={handleVisitedContry}></Country>
+          <Country
+            key={country.cca3}
+            country={country}
+            handleVisitedContry={handleVisitedContry}
+            handleVisitedFlag={handleVisitedFlag}
+          ></Country>
         ))}
       </div>
     </div>
